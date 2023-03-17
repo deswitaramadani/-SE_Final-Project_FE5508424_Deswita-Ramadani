@@ -1,0 +1,34 @@
+program proses_peminjaman_dan_pengembalian_buku
+
+read (pilihan);
+if "peminjaman"
+    READ AND WRITE "username, No.ID, No.Buku" with string
+    if "Save"
+        STORE "Data_Pinjaman" with "username, No.ID, No.Buku"
+        PRINT "username, No.ID, No.Buku"
+    else
+        if "Keluar"
+            then end
+        else READ pilihan
+        end if;
+    end if;
+else "pengembalian"
+    READ AND WRITE "username, No.ID, No.Buku" value with Data_Pinjaman result
+    if "Data_Pinjaman" data exist
+        CLEAR "Data_Pinjaman"
+        if "Keluar"
+            then end
+        else READ pilihan
+        end if;
+    else
+        WHILE "Data_Pinjaman" not found
+        DO WRITE "username, No.ID, No.Buku"
+
+        DISPLAY "Data Tidak Ditemukan"
+        if "Keluar"
+            then end
+        else READ pilihan
+        end if;
+    end if;
+end if;
+end program;
